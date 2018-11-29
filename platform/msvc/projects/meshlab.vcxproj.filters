@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Igarashi05.cpp">
+      <Filter>arap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Sorkine04.cpp">
+      <Filter>laplacian</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\meshlab\Igarashi05.h">
+      <Filter>arap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\meshlab\Sorkine04.h">
+      <Filter>laplacian</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\meshlab\Mesh.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="arap">
+      <UniqueIdentifier>{d1bc9e4d-403e-4574-b062-972539c24110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="laplacian">
+      <UniqueIdentifier>{aab8a4d1-8407-4225-9ca3-cf42c2c6fa73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{6da62132-38eb-4334-bb63-fd63b31dc891}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

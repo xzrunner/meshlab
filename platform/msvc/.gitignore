@@ -1,0 +1,5 @@
+meshlab/
+projects/*
+
+!projects/meshlab.vcxproj
+!projects/meshlab.vcxproj.filters
