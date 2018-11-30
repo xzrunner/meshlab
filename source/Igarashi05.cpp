@@ -1,3 +1,7 @@
+// use code from: 
+// https://github.com/zhangzhensong/arap
+// http://www.dgp.toronto.edu/~rms/software/Deform2D/
+
 #include "meshlab/Igarashi05.h"
 
 namespace

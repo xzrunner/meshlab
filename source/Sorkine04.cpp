@@ -1,4 +1,4 @@
-// use code from: laplacian-deformation
+// use code from: mikolalysenko/laplacian-deformation
 // https://github.com/mikolalysenko/laplacian-deformation
 
 #include "meshlab/Sorkine04.h"
