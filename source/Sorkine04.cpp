@@ -79,7 +79,7 @@ void Sorkine04::doDeform(float* newHandlePositions, int nHandlePositions, float*
 		Eigen::VectorXd solutionDelta = m_lapMat * minimizerSolution;
 
 		int count = 0;
-		for (int i = 0; i < m_roiDeltaLengths.size(); ++i) {
+		for (int i = 0, n = m_roiDeltaLengths.size(); i < n; ++i) {
 
 			double len = getLength(solutionDelta[3 * i + 0], solutionDelta[3 * i + 1], solutionDelta[3 * i + 2]);
 			double originalLength = m_roiDeltaLengths[i];
@@ -93,16 +93,16 @@ void Sorkine04::doDeform(float* newHandlePositions, int nHandlePositions, float*
 		Eigen::VectorXd y = m_augNormalizeDeltaCoordinatesTrans * m_b;
 		Eigen::VectorXd normalizedSolution = m_normalizeDeltaCoordinatesCholesky->solve(y);
 
-		for (int i = 0; i < m_roi.size(); ++i) {
+		for (int i = 0, n = m_roi.size(); i < n; ++i) {
 			for (int d = 0; d < 3; ++d) {
-				outPositions[3 * m_roi[i] + d] = normalizedSolution[3 * i + d];
+				outPositions[3 * m_roi[i] + d] = static_cast<float>(normalizedSolution[3 * i + d]);
 			}
 		}
 	}
 	else {
-		for (int i = 0; i < m_roi.size(); ++i) {
+		for (int i = 0, n = m_roi.size(); i < n; ++i) {
 			for (int d = 0; d < 3; ++d) {
-				outPositions[3 * m_roi[i] + d] = minimizerSolution[3 * i + d];
+				outPositions[3 * m_roi[i] + d] = static_cast<float>(minimizerSolution[3 * i + d]);
 			}
 		}
 	}
@@ -124,15 +124,15 @@ void Sorkine04::prepareDeform(const std::vector<int>& cells, const float* positi
 	std::vector<int> roiMap(positions_n, -1);
 
 	{
-		for (int i = 0; i < m_roi.size(); ++i) {
+		for (int i = 0, n = m_roi.size(); i < n; ++i) {
 			roiMap[m_roi[i]] = i;
 		}
 
 		adj.resize(m_roi.size());
-		for (int i = 0; i < adj.size(); ++i) {
+		for (int i = 0, n = adj.size(); i < n; ++i) {
 			adj[i] = std::vector<int>();
 		}
-		for (int i = 0; i < cells.size(); i += 3) {
+		for (int i = 0, n = cells.size(); i < n; i += 3) {
 			int c[3] = { cells[i + 0], cells[i + 1] , cells[i + 2] };
 
 			for (int j = 0; j < 3; ++j) {
@@ -151,7 +151,7 @@ void Sorkine04::prepareDeform(const std::vector<int>& cells, const float* positi
 	Eigen::VectorXd roiPositions(m_roi.size() * 3);
 	{
 		int c = 0;
-		for (int i = 0; i < m_roi.size(); ++i) {
+		for (int i = 0, n = m_roi.size(); i < n; ++i) {
 			for (int d = 0; d < 3; ++d) {
 				roiPositions[c++] = positions[3 * m_roi[i] + d];
 			}
@@ -189,7 +189,7 @@ void Sorkine04::prepareDeform(const std::vector<int>& cells, const float* positi
 	// we need these when normalizing the results of our solver.
 	{
 		m_roiDeltaLengths = std::vector<double>(m_roiDelta.size() / 3, 0.0f);
-		for (int i = 0; i < m_roiDelta.size() / 3; ++i) {
+		for (int i = 0, n = m_roiDelta.size() / 3; i < n; ++i) {
 			m_roiDeltaLengths[i] = getLength(
 				m_roiDelta[3 * i + 0],
 				m_roiDelta[3 * i + 1],
@@ -256,13 +256,13 @@ std::vector<Eigen::Triplet<double>> Sorkine04::calcUniformLaplacianCoeffs(std::v
 	std::vector<Eigen::Triplet<double>> result;
 	std::map<int, double> row;
 
-	for (int i = 0; i < (m_roi.size() * 3); ++i) {
+	for (int i = 0, n = m_roi.size() * 3; i < n; ++i) {
 		rowBegins.push_back(result.size());
 		row.clear();
 
 		row[(i % 3) + int(i / 3) * 3] = 1;
 		double w = -1.0 / adj[int(i / 3)].size();
-		for (int j = 0; j < adj[int(i / 3)].size(); ++j) {
+		for (int j = 0, m = adj[int(i / 3)].size(); j < m; ++j) {
 			row[(i % 3) + 3 * adj[int(i / 3)][j]] = w;
 		}
 
@@ -283,23 +283,23 @@ std::vector<Eigen::Triplet<double>> Sorkine04::calcEnergyMatrixCoeffs(
 
 	Ts.resize(m_roi.size());
 
-	for (int i = 0; i < m_roi.size(); ++i) {
+	for (int i = 0, n = m_roi.size(); i < n; ++i) {
 		// set of {i} and the neigbbours of i.
 		std::vector<int> iAndNeighbours;
 
 		iAndNeighbours.push_back(i);
-		for (int j = 0; j < adj[i].size(); ++j) {
+		for (int j = 0, m = adj[i].size(); j < m; ++j) {
 			iAndNeighbours.push_back(adj[i][j]);
 		}
 
 		Eigen::MatrixXd At(7, iAndNeighbours.size() * 3);
 		for (int row = 0; row < 7; ++row) {
-			for (int col = 0; col < iAndNeighbours.size() * 3; ++col) {
+			for (int col = 0, n = iAndNeighbours.size() * 3; col < n; ++col) {
 				At(row, col) = 0.0f;
 			}
 		}
 
-		for (int j = 0; j < iAndNeighbours.size(); ++j) {
+		for (int j = 0, m = iAndNeighbours.size(); j < m; ++j) {
 			int k = iAndNeighbours[j];
 
 			double vk[3];
@@ -346,7 +346,7 @@ std::vector<Eigen::Triplet<double>> Sorkine04::calcEnergyMatrixCoeffs(
 
 	std::map<int, double> row;
 
-	for (int i = 0; i < (m_roi.size() * 3); ++i) {
+	for (int i = 0, n = m_roi.size() * 3; i < n; ++i) {
 		row.clear();
 
 		// add uniform weights to matrix(equation 2 from paper)
@@ -362,7 +362,7 @@ std::vector<Eigen::Triplet<double>> Sorkine04::calcEnergyMatrixCoeffs(
 
 		std::vector<int> iAndNeighbours;
 		iAndNeighbours.push_back(int(i / 3));
-		for (int j = 0; j < adj[int(i / 3)].size(); ++j) {
+		for (int j = 0, m = adj[int(i / 3)].size(); j < m; ++j) {
 			iAndNeighbours.push_back(adj[int(i / 3)][j]);
 		}
 
