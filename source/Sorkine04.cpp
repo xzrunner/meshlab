@@ -13,7 +13,7 @@ double getLength(double ax, double ay, double az)
 
 }
 
-namespace ml
+namespace meshlab
 {
 
 Sorkine04::Sorkine04(const std::vector<int>& cells, const float* positions, size_t positions_n, const std::vector<int>& roi, const int unconstrainedBegin, bool RSI)

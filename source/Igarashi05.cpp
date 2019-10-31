@@ -21,7 +21,7 @@ void ExtractSubMatrix(Eigen::MatrixXd& mFrom, int nRowOffset, int nColOffset, Ei
 
 }
 
-namespace ml
+namespace meshlab
 {
 
 Igarashi05::Igarashi05(const std::vector<vec2f>& verts, const std::vector<size_t>& tris)

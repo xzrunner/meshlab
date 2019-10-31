@@ -3,7 +3,7 @@
 #include <Eigen/Sparse>
 #include <Eigen/Dense>
 
-namespace ml
+namespace meshlab
 {
 
 class Sorkine04

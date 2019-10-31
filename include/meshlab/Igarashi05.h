@@ -4,7 +4,7 @@
 
 #include <set>
 
-namespace ml
+namespace meshlab
 {
 
 class Igarashi05
