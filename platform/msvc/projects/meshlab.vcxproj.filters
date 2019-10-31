@@ -2,32 +2,47 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\source\Igarashi05.cpp">
-      <Filter>arap</Filter>
+      <Filter>shape_deformation\arap</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\Sorkine04.cpp">
-      <Filter>laplacian</Filter>
+      <Filter>shape_deformation\laplacian</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Levy02.cpp">
+      <Filter>parametrization\lscm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\meshlab\Igarashi05.h">
-      <Filter>arap</Filter>
+      <Filter>shape_deformation\arap</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\meshlab\Sorkine04.h">
-      <Filter>laplacian</Filter>
+      <Filter>shape_deformation\laplacian</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\meshlab\Mesh.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\meshlab\Levy02.h">
+      <Filter>parametrization\lscm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="arap">
-      <UniqueIdentifier>{d1bc9e4d-403e-4574-b062-972539c24110}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="laplacian">
-      <UniqueIdentifier>{aab8a4d1-8407-4225-9ca3-cf42c2c6fa73}</UniqueIdentifier>
-    </Filter>
     <Filter Include="utility">
       <UniqueIdentifier>{6da62132-38eb-4334-bb63-fd63b31dc891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shape_deformation">
+      <UniqueIdentifier>{02b509f3-cd74-4d65-8cde-a21d0816645d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="parametrization">
+      <UniqueIdentifier>{831fb250-41a6-44a2-a2f9-81827383b5fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shape_deformation\laplacian">
+      <UniqueIdentifier>{aab8a4d1-8407-4225-9ca3-cf42c2c6fa73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shape_deformation\arap">
+      <UniqueIdentifier>{d1bc9e4d-403e-4574-b062-972539c24110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="parametrization\lscm">
+      <UniqueIdentifier>{c87ff58b-d7a8-468f-a811-3199c17f0891}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\meshlab\Igarashi05.h" />
+    <ClInclude Include="..\..\..\include\meshlab\Levy02.h" />
     <ClInclude Include="..\..\..\include\meshlab\Mesh.h" />
     <ClInclude Include="..\..\..\include\meshlab\Sorkine04.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\Igarashi05.cpp" />
+    <ClCompile Include="..\..\..\source\Levy02.cpp" />
     <ClCompile Include="..\..\..\source\Sorkine04.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -62,7 +64,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\polymesh3\include;..\..\..\..\external\eigen\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\polymesh3\include;..\..\..\..\external\eigen\include;..\..\..\..\external\opennl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -76,7 +78,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\polymesh3\include;..\..\..\..\external\eigen\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\..\..\sm\src\sm;..\..\..\..\polymesh3\include;..\..\..\..\external\eigen\include;..\..\..\..\external\opennl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
