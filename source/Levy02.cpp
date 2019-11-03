@@ -1,5 +1,6 @@
 #include "meshlab/Levy02.h"
 
+#define GEO_STATIC_LIBS
 #include <OpenNL_psm.h>
 
 #include <iostream>
@@ -182,9 +183,9 @@ void Levy02::SetupLSCM()
 {
     assert(m_tris.size() % 3 == 0);
     for (size_t i = 0, n = m_tris.size(); i < n; ) {
-        auto v0 = i++;
-        auto v1 = i++;
-        auto v2 = i++;
+        auto v0 = m_tris[i++];
+        auto v1 = m_tris[i++];
+        auto v2 = m_tris[i++];
         SetupConformalMapRelations(v0, v1, v2);
     }
 }
